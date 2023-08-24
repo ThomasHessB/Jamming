@@ -1,11 +1,23 @@
-import * as React from 'react';
-import './style.css';
+// App.js
+import React from 'react';
+import './App.css';
+import SearchBar from './SearchBar';
+import SearchResults from './SearchResults';
+import Playlist from './Playlist';
 
-export default function App() {
-  return (
-    <div>
-      <h1>Spotify App</h1>
-      <p>I'm supposed to make a </p>
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <div className="App">
+        <h1>My Jamming App</h1>
+        <SearchBar />
+        <div className="App-playlist">
+          <SearchResults />
+          <Playlist />
+        </div>
+      </div>
+    );
+  }
 }
+
+export default App;
