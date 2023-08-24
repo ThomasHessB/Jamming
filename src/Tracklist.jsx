@@ -5,13 +5,18 @@ import Track from './Track';
 
 class Tracklist extends React.Component {
   render() {
+    const { searchResults } = this.props;
+
     return (
       <div className="TrackList">
-        {/* Map through track data and render Track components */}
-        {/* Example: */}
-        {/* <Track /> */}
-        {/* <Track /> */}
-        {/* ... */}
+        {searchResults.map((track) => (
+          <Track
+            key={track.id}
+            name={track.name}
+            artist={track.artist}
+            album={track.album}
+          />
+        ))}
       </div>
     );
   }
