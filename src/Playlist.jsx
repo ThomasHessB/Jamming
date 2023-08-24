@@ -12,6 +12,13 @@ class Playlist extends React.Component {
     onNameChange: PropTypes.func.isRequired,
   };
 
+  handleSavePlaylist = () => {
+    const trackURIs = this.props.getURIsFromPlaylist(); // Call this method from props
+    // Call the method to interact with the Spotify API using track URIs
+    // Reset the playlist in the app's state
+    this.props.resetPlaylist();
+  };
+
   render() {
     const {
       playlistName,
@@ -36,7 +43,9 @@ class Playlist extends React.Component {
 
         <h2>My Playlist</h2>
         <Tracklist tracks={playlistTracks} />
-        <button className="Playlist-save">SAVE TO SPOTIFY</button>
+        <button className="Playlist-save" onClick={this.handleSavePlaylist}>
+          SAVE TO SPOTIFY
+        </button>
       </div>
     );
   }

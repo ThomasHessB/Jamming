@@ -74,7 +74,17 @@ class App extends React.Component {
     this.setState({ playlistName: event.target.value });
   };
 
-  
+  getURIsFromPlaylist = () => {
+    return this.state.playlistTracks.map((track) => track.uri);
+  };
+
+  resetPlaylist = () => {
+    this.setState({
+      playlistName: 'New Playlist',
+      playlistTracks: [],
+    });
+  };
+
   render() {
     return (
       <div className="App">
@@ -91,6 +101,8 @@ class App extends React.Component {
             isEditingPlaylistName={this.state.isEditingPlaylistName}
             playlistTracks={this.state.playlistTracks}
             onNameChange={this.handlePlaylistNameChange}
+            getURIsFromPlaylist={this.getURIsFromPlaylist}
+            resetPlaylist={this.resetPlaylist}
           />
         </div>
       </div>
