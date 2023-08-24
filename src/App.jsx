@@ -7,6 +7,7 @@ import Playlist from './Playlist';
 
 class App extends React.Component {
   state = {
+    isEditingPlaylistName: false,
     searchResults: [
       {
         id: '1',
@@ -42,6 +43,7 @@ class App extends React.Component {
     ],
     playlistName: 'My Awesome Playlist',
     playlistTracks: [], // Initialize with an empty array
+    isEditingPlaylistName: false,
   };
 
   addTrackToPlaylist = (track) => {
@@ -62,6 +64,17 @@ class App extends React.Component {
     this.setState({ playlistTracks: newPlaylistTracks });
   };
 
+  toggleEditingPlaylistName = () => {
+    this.setState((prevState) => ({
+      isEditingPlaylistName: !prevState.isEditingPlaylistName,
+    }));
+  };
+
+  handlePlaylistNameChange = (event) => {
+    this.setState({ playlistName: event.target.value });
+  };
+
+  
   render() {
     return (
       <div className="App">
@@ -75,7 +88,9 @@ class App extends React.Component {
           />
           <Playlist
             playlistName={this.state.playlistName}
+            isEditingPlaylistName={this.state.isEditingPlaylistName}
             playlistTracks={this.state.playlistTracks}
+            onNameChange={this.handlePlaylistNameChange}
           />
         </div>
       </div>
