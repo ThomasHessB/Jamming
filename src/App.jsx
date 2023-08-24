@@ -97,7 +97,16 @@ class App extends React.Component {
     })
       .then(response => response.json())
       .then(data => {
-        // Handle the API response
+        if (data.tracks) {
+          const tracks = data.tracks.items.map(track => ({
+            id: track.id,
+            name: track.name,
+            artist: track.artists[0].name,
+            album: track.album.name,
+            uri: track.uri
+          }));
+          this.setState({ searchResults: tracks });
+        }
       });
   };
 
@@ -105,7 +114,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1>My Jamming App</h1>
-        <SearchBar />
+        <SearchBar onSearch={this.search} />
         <div className="App-playlist">
           <SearchResults
             searchResults={this.state.searchResults}

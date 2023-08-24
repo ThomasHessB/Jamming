@@ -12,7 +12,7 @@ class SearchResults extends React.Component {
         <h2>Results</h2>
         <Tracklist
           searchResults={searchResults}
-          tracks={searchResults}
+          tracks={this.props.searchResults}
           onAdd={this.props.onAdd}
           onRemove={this.props.onRemove}
         />
