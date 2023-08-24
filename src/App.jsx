@@ -4,6 +4,7 @@ import './App.css';
 import SearchBar from './SearchBar';
 import SearchResults from './SearchResults';
 import Playlist from './Playlist';
+import Spotify from './Spotify';
 
 class App extends React.Component {
   state = {
@@ -83,6 +84,21 @@ class App extends React.Component {
       playlistName: 'New Playlist',
       playlistTracks: [],
     });
+  };
+
+  search = term => {
+    const accessToken = Spotify.getAccessToken();
+
+    // Use the access token for API requests
+    fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        // Handle the API response
+      });
   };
 
   render() {
