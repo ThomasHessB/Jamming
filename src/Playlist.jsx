@@ -13,16 +13,20 @@ class Playlist extends React.Component {
   };
 
   render() {
-    const { playlistName, playlistTracks } = this.props;
-    const { isEditingPlaylistName } = this.state;
+    const {
+      playlistName,
+      isEditingPlaylistName,
+      playlistTracks,
+      onNameChange,
+    } = this.props;
 
     return (
       <div className="Playlist">
         {isEditingPlaylistName ? (
           <input
             value={playlistName}
-            onChange={this.handlePlaylistNameChange}
-            onChange={this.props.onNameChange}
+            onChange={handlePlaylistNameChange}
+            onChange={onNameChange}
             onBlur={this.toggleEditingPlaylistName}
             autoFocus
           />
