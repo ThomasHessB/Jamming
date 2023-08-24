@@ -5,10 +5,12 @@ import Tracklist from './Tracklist';
 
 class SearchResults extends React.Component {
   render() {
+    const { searchResults } = this.props;
+
     return (
       <div className="SearchResults">
         <h2>Results</h2>
-        <Tracklist />
+        <Tracklist searchResults={searchResults} />
       </div>
     );
   }

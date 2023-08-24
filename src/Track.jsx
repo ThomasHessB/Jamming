@@ -5,6 +5,7 @@ import './Track.css';
 class Track extends React.Component {
   render() {
     const { name, artist, album } = this.props;
+    const { searchResults } = this.props;
 
     if (!searchResults) {
       return <div>Loading...</div>;

@@ -5,7 +5,12 @@ import Track from './Track';
 
 class Tracklist extends React.Component {
   render() {
+    
     const { searchResults } = this.props;
+
+    if (!searchResults) {
+      return null; // or a loading message
+    }
 
     return (
       <div className="TrackList">
