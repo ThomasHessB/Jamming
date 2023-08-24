@@ -40,6 +40,26 @@ class App extends React.Component {
       },
       // Add more tracks as needed
     ],
+    playlistName: 'My Awesome Playlist',
+    playlistTracks: [], // Initialize with an empty array
+  };
+
+  addTrackToPlaylist = (track) => {
+    if (
+      !this.state.playlistTracks.find(
+        (savedTrack) => savedTrack.id === track.id
+      )
+    ) {
+      const newPlaylistTracks = [...this.state.playlistTracks, track];
+      this.setState({ playlistTracks: newPlaylistTracks });
+    }
+  };
+
+  removeTrackFromPlaylist = (track) => {
+    const newPlaylistTracks = this.state.playlistTracks.filter(
+      (savedTrack) => savedTrack.id !== track.id
+    );
+    this.setState({ playlistTracks: newPlaylistTracks });
   };
 
   render() {
@@ -48,8 +68,15 @@ class App extends React.Component {
         <h1>My Jamming App</h1>
         <SearchBar />
         <div className="App-playlist">
-          <SearchResults searchResults={this.state.searchResults} />
-          <Playlist />
+          <SearchResults
+            searchResults={this.state.searchResults}
+            onAdd={this.addTrackToPlaylist}
+            onRemove={this.removeTrackFromPlaylist}
+          />
+          <Playlist
+            playlistName={this.state.playlistName}
+            playlistTracks={this.state.playlistTracks}
+          />
         </div>
       </div>
     );

@@ -19,7 +19,18 @@ class Track extends React.Component {
             {artist} | {album}
           </p>
         </div>
-        <button className="Track-action">+</button>
+        <button
+          className="Track-action"
+          onClick={() => this.props.onAdd(this.props.track)}
+        >
+          +
+        </button>
+        <button
+          className="Track-action"
+          onClick={() => this.props.onRemove(this.props.track)}
+        >
+          -
+        </button>
       </div>
     );
   }

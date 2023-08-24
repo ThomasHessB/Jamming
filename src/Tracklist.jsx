@@ -5,8 +5,8 @@ import Track from './Track';
 
 class Tracklist extends React.Component {
   render() {
-    
     const { searchResults } = this.props;
+    const { tracks } = this.props;
 
     if (!searchResults) {
       return null; // or a loading message
@@ -20,6 +20,8 @@ class Tracklist extends React.Component {
             name={track.name}
             artist={track.artist}
             album={track.album}
+            onAdd={this.props.onAdd}
+            onRemove={this.props.onRemove}
           />
         ))}
       </div>
